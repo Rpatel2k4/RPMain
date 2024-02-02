@@ -1,0 +1,40 @@
+function setup() {
+  createCanvas(400, 400);
+  background(255);
+  
+// Reference image (check figure 7.2) link: https://www.google.com/url?sa=i&url=https%3A%2F%2Fedu.rsc.org%2Fresources%2Fchemical-misconceptions-i-chemical-structure%2F1139.article&psig=AOvVaw3rwR1chO9Mtgzzomvfs2MQ&ust=1706983632979000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCMiSodqfjYQDFQAAAAAdAAAAABAE
+  
+// Make the nucleus
+  ellipse(200, 200, 50); 
+  
+// Put protons and nuetrons inside the nucleus ellipse and add the +
+  ellipse(190, 190, 20, 20);
+  ellipse(210, 210, 20, 20); 
+  line(190,190,190,200);
+  line(185,195,195,195);
+
+// Draw circles for orbits for the electrons
+  noFill();
+  ellipse(200, 200, 150);
+  ellipse(200, 200, 300);
+  
+// Put three electrons on the orbits that are filled in black
+  fill(0);
+  ellipse(255, 150, 10);
+  ellipse(145, 250, 10);
+  ellipse(310, 100, 10);
+
+// Add the - sign to the electrons
+  stroke(255);
+  line(308,100,313,100);
+  line(252,150,258,150);
+  line(142,250,148,250);
+  
+// Add labels to the parts of the diagram
+  textSize(12);
+  text('Nucleus', 150, 220);
+  text('Proton', 180, 190);
+  text('Neutron', 200, 210);
+  text('Electron', 260, 150);
+  text('Simple diagram of an atom', 125, 375)
+}
