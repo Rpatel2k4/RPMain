@@ -1,0 +1,20 @@
+function setup() {
+  createCanvas(400, 400);
+  noStroke();
+}
+
+function draw() {
+  background(255);
+  
+// Draw the red circle
+  fill(255, 0, 0, 127);
+  ellipse(130, 150, 200);
+
+// Draw the second green circle
+  fill(0, 255, 0, 127);
+  ellipse(240, 150, 200);
+
+// Draw the third blue circle
+  fill(0, 0, 255, 127);
+  ellipse(190, 250, 200);
+}
