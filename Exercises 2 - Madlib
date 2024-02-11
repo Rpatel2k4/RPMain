@@ -1,0 +1,20 @@
+let userInput = "";
+
+// write the madlib sentence with a blank
+function setup() {
+  createCanvas(400, 200);
+  background(220);
+  fill(0);
+  text("The weather outside is very ____.", 100, 100);
+}
+
+// add code to clear user input or add to it
+function keyTyped() {
+  if (key === 'Enter') { 
+    userInput = "";
+  } else {
+    userInput += key;
+  }
+  background(220);
+  text("The weather outside is very " + userInput + ".", 100, 100); 
+}
