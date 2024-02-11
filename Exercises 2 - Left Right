@@ -1,0 +1,19 @@
+function setup() {
+  createCanvas(400, 200);
+}
+
+function draw() {
+  background(220);
+  
+// Line in the middle
+  stroke(150);
+  strokeWeight(2);
+  line(200,0,200,200);
+  
+// If then statement to determine mouse position
+  if (mouseX < 200) {
+    text("Left", 190,190);
+  } else {
+    text("Right", 185,190);
+  }
+}
