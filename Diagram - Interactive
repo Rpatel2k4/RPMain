@@ -1,0 +1,83 @@
+let showProtons = true;
+let showNeutrons = true;
+let showElectrons = true;
+
+function setup() {
+  createCanvas(400, 400);
+  drawAtom();
+}
+
+// Reference image (check figure 7.2) link: https://www.google.com/url?sa=i&url=https%3A%2F%2Fedu.rsc.org%2Fresources%2Fchemical-misconceptions-i-chemical-structure%2F1139.article&psig=AOvVaw3rwR1chO9Mtgzzomvfs2MQ&ust=1706983632979000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCMiSodqfjYQDFQAAAAAdAAAAABAE
+
+// Purpose of interactions is to help make the diagram easy to understand by maybe introducing one item at a time like if you were explaining to students and don't want to overwhelm them with all parts of the diagram at once. Helps to take it one part at a time. 
+
+function drawAtom() {
+  background(255);
+  
+// Instructions for how users can interact
+  textSize(12);
+  fill(0);
+  noStroke();
+  text('Press P to toggle protons, N for neutrons, E for electrons', 10, 15);
+  
+// Draw the nucleus
+  fill(200);
+  ellipse(200, 200, 50);
+  
+// Draw the protons in color and + sign
+  if (showProtons) {
+    fill(0,0,255); 
+    ellipse(191, 190, 20, 20); 
+    stroke(255); 
+    line(190, 185, 190, 195); 
+    line(185, 190, 195, 190);
+    noStroke(); 
+    text('Proton', 140, 190); 
+  }
+  
+// Draw the neutrons in color
+  if (showNeutrons) {
+    fill(255,0,0);
+    ellipse(207, 210, 20, 20); 
+    text('Neutron', 226, 215);
+  }
+  
+// Draw the two orbits for the electrons
+    noFill();
+    stroke(0); 
+    ellipse(200, 200, 150);
+    ellipse(200, 200, 300);
+  
+// Draw the three electrons on the orbits
+  if (showElectrons) {
+    fill(0); // Black for electrons
+    ellipse(255, 150, 10); // Electron
+    ellipse(145, 250, 10);
+    ellipse(310, 100, 10);
+    
+// Add - signs to the electrons
+    stroke(255);
+    line(308,100,313,100);
+    line(252,150,258,150);
+    line(142,250,148,250);
+    
+    noStroke(); 
+    fill(0); 
+    text('Electron', 270, 150);
+  }
+  
+// Label the diagram
+  text('Nucleus', 180, 237);
+  text('Simple diagram of an atom', 125, 375);
+}
+
+function keyPressed() {
+  if (key === 'P' || key === 'p') {
+    showProtons = !showProtons;
+  } else if (key === 'N' || key === 'n') {
+    showNeutrons = !showNeutrons;
+  } else if (key === 'E' || key === 'e') {
+    showElectrons = !showElectrons;
+  }
+  drawAtom();
+}
