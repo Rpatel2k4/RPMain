@@ -1,0 +1,37 @@
+// start off by creating variables for positon and speed
+
+let x = 0;
+let speed = 2;
+
+function setup() {
+  createCanvas(400, 100);
+}
+
+// use basic shapes to make our runner
+
+function drawStickFigure(x, y) {
+  // Head
+  circle(x, y, 20);
+  // Body
+  line(x, y + 10, x, y + 40);
+  // Arms
+  line(x - 15, y + 20, x + 15, y + 20);
+  // Legs
+  line(x, y + 40, x - 15, y + 60);
+  line(x, y + 40, x + 15, y + 60);
+}
+
+function draw() {
+  background(220);
+
+// write the conditional statement to make the runner move and display message at the end
+  
+  if(x < width) {
+    drawStickFigure(x, 40); 
+    x += speed;
+  } else {
+    fill('0');
+    textSize(20);
+    text('Winner 1st Place!', 100, 50);
+  }
+}
