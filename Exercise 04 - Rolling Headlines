@@ -1,0 +1,18 @@
+let headline = "CNN: Megacity may be months away from running out of water";
+let x;
+
+function setup() {
+  createCanvas(800, 200);
+  textSize(24);
+  fill(0);
+  x = width;
+}
+
+function draw() {
+  background(255);
+  text(headline, x, height - 20); 
+  x -= 2; 
+  if (x < -textWidth(headline)) {
+    x = width;
+  }
+}
