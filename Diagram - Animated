@@ -1,0 +1,101 @@
+let showProtons = true;
+let showNeutrons = true;
+let showElectrons = true;
+let animateElectrons = false;
+
+function setup() {
+  createCanvas(400, 400);
+  let animateButton = createButton('Animate'); 
+  animateButton.mousePressed(toggleAnimation); 
+}
+
+function draw() {
+  background(255);
+  drawAtom();
+  if (animateElectrons && showElectrons) {
+    drawAnimatedElectrons(); 
+  }
+}
+
+function drawAtom() {
+  textSize(12);
+  fill(0);
+  noStroke();
+  text('Press P to toggle protons, N for neutrons, E for electrons', 10, 15);
+
+  // Draw the nucleus
+  fill(200);
+  ellipse(200, 200, 50);
+
+  // Draw the protons with plus signs
+  if (showProtons) {
+    fill(0, 0, 255); 
+    ellipse(191, 190, 20, 20); 
+    stroke(255);
+    line(191, 185, 191, 195); 
+    line(186, 190, 196, 190); 
+    noStroke();
+    fill(0);
+    text('Proton', 140, 190);
+  }
+
+  // Draw the neutrons
+  if (showNeutrons) {
+    fill(255, 0, 0); 
+    ellipse(207, 210, 20, 20); 
+    fill(0);
+    text('Neutron', 226, 215);
+  }
+
+  // Draw orbits
+  stroke(0);
+  noFill();
+  ellipse(200, 200, 150); // First orbit
+  ellipse(200, 200, 300); // Second orbit
+
+  // Make electrons static if not animating
+  if (!animateElectrons && showElectrons) {
+    drawStaticElectrons();
+  }
+
+  // Label the diagram
+  noStroke();
+  fill(0);
+  text('Nucleus', 180, 237);
+  text('Simple diagram of an atom', 125, 375);
+}
+
+function drawStaticElectrons() {
+  fill(0); 
+  ellipse(255, 150, 10); 
+  ellipse(145, 250, 10); 
+  ellipse(310, 100, 10); 
+}
+
+function drawAnimatedElectrons() {
+  let e1x = 200 + 75 * cos(frameCount * 0.02);
+  let e1y = 200 + 75 * sin(frameCount * 0.02);
+  let e2x = 200 + 150 * cos(frameCount * 0.04);
+  let e2y = 200 + 150 * sin(frameCount * 0.04);
+  let e3x = 200 + 150 * cos(-frameCount * 0.03);
+  let e3y = 200 + 150 * sin(-frameCount * 0.03);
+
+  fill(0);
+  ellipse(e1x, e1y, 10); 
+  ellipse(e2x, e2y, 10);
+  ellipse(e3x, e3y, 10); 
+}
+
+function toggleAnimation() {
+  animateElectrons = !animateElectrons; 
+}
+
+function keyPressed() {
+  if (key === 'P' || key === 'p') {
+    showProtons = !showProtons;
+  } else if (key === 'N' || key === 'n') {
+    showNeutrons = !showNeutrons;
+  } else if (key === 'E' || key === 'e') {
+    showElectrons = !showElectrons;
+  }
+}
