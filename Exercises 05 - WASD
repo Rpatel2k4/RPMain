@@ -1,0 +1,35 @@
+let avatarX = 300;
+let avatarY = 300;
+
+function setup() {
+  createCanvas(600, 600);
+}
+
+function draw() {
+  background(220);
+  drawAvatar(avatarX, avatarY);
+}
+
+function drawAvatar(x, y) {
+  // Simple stick figure
+  fill(0);
+  ellipse(x, y, 50, 50); // Head
+  line(x, y + 25, x, y + 70); // Body
+  line(x, y + 70, x - 20, y + 100); // Legs
+  line(x, y + 70, x + 20, y + 100);
+  line(x, y + 40, x - 30, y + 50); // Arms
+  line(x, y + 40, x + 30, y + 50);
+}
+
+function keyPressed() {
+  let step = 10; 
+  if (key === 'W' || key === 'w') {
+    avatarY -= step;
+  } else if (key === 'S' || key === 's') {
+    avatarY += step;
+  } else if (key === 'A' || key === 'a') {
+    avatarX -= step;
+  } else if (key === 'D' || key === 'd') {
+    avatarX += step;
+  }
+}
