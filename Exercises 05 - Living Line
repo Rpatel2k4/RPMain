@@ -1,0 +1,14 @@
+let prevX = 0; 
+let prevY = 0;
+
+function setup() {
+  createCanvas(400, 400);
+  background(240);
+}
+
+function draw() {
+  line(prevX, prevY, mouseX, mouseY);
+
+  prevX = mouseX;
+  prevY = mouseY;
+}
