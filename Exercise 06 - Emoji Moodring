@@ -1,0 +1,28 @@
+let temperature = 0; // Temperature value based on mouseX position
+let moodEmoji = "😐"; // Default mood emoji
+
+function setup() {
+  createCanvas(400, 400);
+  textSize(32);
+}
+
+function draw() {
+  background(220);
+  updateMood();
+  text(moodEmoji, width / 2 - 16, height / 2 + 10);
+}
+
+function updateMood() {
+  temperature = map(mouseX, 0, width, 0, 100);
+  if (temperature < 20) {
+    moodEmoji = "😒"; // Unhappy
+  } else if (temperature >= 20 && temperature < 40) {
+    moodEmoji = "😐"; // Neutral
+  } else if (temperature >= 40 && temperature < 60) {
+    moodEmoji = "🙂"; // Slightly happy
+  } else if (temperature >= 60 && temperature < 80) {
+    moodEmoji = "😀"; // Happy
+  } else if (temperature >= 80) {
+    moodEmoji = "😁"; // Very happy
+  }
+}
