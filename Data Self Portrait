@@ -1,0 +1,79 @@
+let data = [
+  { day: 'Monday', screen_time: 3, sleep: 7.5, productivity: 7 },
+  { day: 'Tuesday', screen_time: 3.5, sleep: 8.5, productivity: 6 },
+  { day: 'Wednesday', screen_time: 3, sleep: 10, productivity: 8 },
+  { day: 'Thursday', screen_time: 4, sleep: 7, productivity: 4 },
+  { day: 'Friday', screen_time: 6, sleep: 10, productivity: 4 },
+  { day: 'Saturday', screen_time: 2.5, sleep: 8.5, productivity: 8 },
+  { day: 'Sunday', screen_time: 3, sleep: 9, productivity: 7 },
+];
+
+let sleepData = [];
+let productivityData = [];
+let screenTimeData = [];
+
+let showSleep = true;
+let showProductivity = true;
+let showScreenTime = true;
+
+function setup() {
+  createCanvas(600, 400);
+  extractData();
+  
+  // Create buttons
+  let sleepButton = createButton('Sleep');
+  sleepButton.position(20, 20);
+  sleepButton.mousePressed(() => {
+    showSleep = !showSleep;
+  });
+  
+  let productivityButton = createButton('Productivity');
+  productivityButton.position(120, 20);
+  productivityButton.mousePressed(() => {
+    showProductivity = !showProductivity;
+  });
+  
+  let screenTimeButton = createButton('Screen Time');
+  screenTimeButton.position(220, 20);
+  screenTimeButton.mousePressed(() => {
+    showScreenTime = !showScreenTime;
+  });
+}
+
+function extractData() {
+  for (let i = 0; i < data.length; i++) {
+    sleepData.push({ x: i, y: data[i].sleep });
+    productivityData.push({ x: i, y: data[i].productivity });
+    screenTimeData.push({ x: i, y: data[i].screen_time });
+  }
+}
+
+function draw() {
+  background(255);
+
+  if (showSleep) {
+    drawLineGraph(sleepData, 'Sleep', 'blue', 50);
+  }
+  if (showProductivity) {
+    drawLineGraph(productivityData, 'Productivity', 'green', 100);
+  }
+  if (showScreenTime) {
+    drawLineGraph(screenTimeData, 'Screen Time', 'red', 150);
+  }
+}
+
+function drawLineGraph(data, label, color, yOffset) {
+  stroke(color);
+  beginShape();
+  noFill();
+  for (let point of data) {
+    let x = map(point.x, 0, data.length - 1, 50, width - 50);
+    let y = map(point.y, 0, 12, height - 50, 50); // Assuming sleep ranges from 0 to 12 hours
+    vertex(x, y);
+  }
+  endShape();
+
+  fill(color);
+  textSize(16);
+  text(label, 250, height - yOffset);
+}
