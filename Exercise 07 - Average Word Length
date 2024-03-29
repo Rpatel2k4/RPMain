@@ -1,0 +1,14 @@
+function averageWordLength(text) {
+    let words = text.split(" ");
+    let totalLength = 0;
+
+    for (let word of words) {
+        totalLength += word.length;
+    }
+
+    return totalLength / words.length;
+}
+
+let sampleText = "This sentence is jsut an example";
+let avgLength = averageWordLength(sampleText);
+console.log("Average word length:", avgLength);
