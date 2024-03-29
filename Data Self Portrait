@@ -20,7 +20,7 @@ function setup() {
   createCanvas(600, 400);
   extractData();
   
-  // Create buttons
+  
   let sleepButton = createButton('Sleep');
   sleepButton.position(20, 20);
   sleepButton.mousePressed(() => {
@@ -68,7 +68,7 @@ function drawLineGraph(data, label, color, yOffset) {
   noFill();
   for (let point of data) {
     let x = map(point.x, 0, data.length - 1, 50, width - 50);
-    let y = map(point.y, 0, 12, height - 50, 50); // Assuming sleep ranges from 0 to 12 hours
+    let y = map(point.y, 0, 12, height - 50, 50); 
     vertex(x, y);
   }
   endShape();
