@@ -1,0 +1,39 @@
+let shapes = [];
+let numShapes = 6;
+
+function setup() {
+  createCanvas(400, 400);
+  for (let i = 0; i < numShapes; i++) {
+    shapes.push(new Shape());
+  }
+}
+
+function draw() {
+  background(220);
+  translate(width / 2, height / 2);
+  for (let i = 0; i < shapes.length; i++) {
+    shapes[i].display();
+  }
+}
+
+class Shape {
+  constructor() {
+    this.size = random(50, 150);
+    this.rotationSpeed = random(-0.05, 0.05);
+    this.numSides = int(random(3, 8));
+    this.color = color(random(255), random(255), random(255), 150);
+  }
+
+  display() {
+    rotate(frameCount * this.rotationSpeed);
+    fill(this.color);
+    beginShape();
+    for (let i = 0; i < this.numSides; i++) {
+      let angle = map(i, 0, this.numSides, 0, TWO_PI);
+      let x = cos(angle) * this.size;
+      let y = sin(angle) * this.size;
+      vertex(x, y);
+    }
+    endShape(CLOSE);
+  }
+}
