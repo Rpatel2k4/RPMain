@@ -1,0 +1,26 @@
+function sortAlphabetically(text) {
+    return text.split(" ").sort();
+}
+
+function sortByLength(text) {
+    return text.split(" ").sort((a, b) => a.length - b.length);
+}
+
+function sortByFrequency(text) {
+    let words = text.split(" ");
+    let wordFreq = {};
+
+
+    for (let word of words) {
+        wordFreq[word] = (wordFreq[word] || 0) + 1;
+    }
+
+    let sortedWords = Object.keys(wordFreq).sort((a, b) => wordFreq[b] - wordFreq[a]);
+
+    return sortedWords;
+}
+
+let sampleText = "This sentence is an example";
+console.log("Sorted Alphabetically:", sortAlphabetically(sampleText));
+console.log("Sorted by Length:", sortByLength(sampleText));
+console.log("Sorted by Frequency:", sortByFrequency(sampleText));
