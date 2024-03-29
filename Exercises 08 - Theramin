@@ -1,0 +1,17 @@
+let osc;
+
+function setup() {
+  createCanvas(400, 400);
+  osc = new p5.Oscillator();
+  osc.setType('sine');
+  osc.freq(440);
+  osc.amp(0);
+  osc.start();
+}
+
+function draw() {
+  let pitch = map(mouseX, 0, width, 100, 1000); // Map mouse x position to pitch
+  let volume = map(mouseY, 0, height, 1, 0); // Map mouse y position to volume
+  osc.freq(pitch);
+  osc.amp(volume, 0.1);
+}
