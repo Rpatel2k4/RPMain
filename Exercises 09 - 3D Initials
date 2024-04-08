@@ -1,0 +1,46 @@
+function setup() {
+  createCanvas(400, 400, WEBGL);
+}
+
+function draw() {
+  background(100);
+  orbitControl(); 
+
+  push();
+  translate(-50, 0, 0);
+  
+  push();
+  translate(0, -50, 0);
+  box(20, 100, 20);
+  pop();
+  
+  push();
+  translate(10, -100, 0);
+  rotateZ(HALF_PI);
+  cylinder(20, 40, 24, 1, true, true);
+  pop();
+  
+  push();
+  translate(30, -50, -10);
+  rotateZ(-QUARTER_PI);
+  box(20, 80, 20);
+  pop();
+
+  pop();
+
+  push();
+  translate(50, 0, 0); 
+  
+  push();
+  translate(0, -50, 0);
+  box(20, 100, 20);
+  pop();
+  
+  push();
+  translate(15, -100, 0);
+  rotateZ(HALF_PI);
+  torus(20, 10);
+  pop();
+
+  pop();
+}
