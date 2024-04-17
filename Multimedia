@@ -1,0 +1,51 @@
+let frontImage; 
+let backImage; 
+let angleX = 0; 
+let angleY = 0;
+
+function preload() {
+  frontImage = loadImage('Frontcard.png');
+  backImage = loadImage('Backcard.png');
+}
+
+function setup() {
+  createCanvas(600, 400, WEBGL);
+}
+
+function draw() {
+  background(255); 
+  rotateX(angleX);
+  rotateY(angleY);
+  
+  drawPostcard();
+}
+
+function drawPostcard() {
+  let postcardWidth = 400;
+  let postcardHeight = 350;
+  
+  let postcardX = 0;
+  let postcardY = 0;
+  let postcardZ = 0;
+  
+
+  push();
+  translate(postcardX, postcardY, postcardZ);
+  texture(frontImage);
+  plane(postcardWidth, postcardHeight);
+  pop();
+  
+
+  push();
+  translate(postcardX, postcardY, postcardZ - 1);
+  rotateY(PI);
+  texture(backImage);
+  plane(postcardWidth, postcardHeight);
+  
+}
+
+function mouseDragged() {
+  angleX += (mouseY - pmouseY) * 0.01;
+  angleY += (mouseX - pmouseX) * 0.01;
+
+}
