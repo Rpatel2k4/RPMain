@@ -1,0 +1,24 @@
+let x = 100;
+let y = 100;
+let xspeed = 1;
+let yspeed = 3.3;
+
+function setup() {
+  createCanvas(200, 200);
+}
+
+function draw() {
+  background(51);
+
+  x = x + xspeed;
+  y = y + yspeed;
+
+  if ((x > width) || (x < 0)) {
+    xspeed = xspeed * -1;
+  }
+  if ((y > height) || (y < 0)) {
+    yspeed = yspeed * -1;
+  }
+
+  ellipse(x, y, 16, 16);
+}
